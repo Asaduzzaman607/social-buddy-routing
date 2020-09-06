@@ -5,6 +5,8 @@ const Home = () => {
 
     const[posts, setPosts]= useState([]);
 
+    // post load section
+
     useEffect(()=>{
         const url = 'https://jsonplaceholder.typicode.com/posts'
         fetch(url)

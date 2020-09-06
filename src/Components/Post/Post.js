@@ -1,60 +1,64 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
+import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 
-const useStyles = makeStyles({
-    root: {
-      minWidth: 275,
-    },
-    bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
-    },
-    title: {
-      fontSize: 14,
-    },
-    pos: {
-      marginBottom: 12,
-    },
-  });
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+}));
+
 
 const Post = (props) => {
-    console.log(props.post)
+    
 
     const{title,body,id} = props.post
 
+
     const classes = useStyles();
-    const bull = <span className={classes.bullet}>•</span>;
+
     return (
 
-        <Card className={classes.root}>
-      <CardContent>
-        <Typography className={classes.title} col-lg-6 col-md-6 col-sm-12 col-12 m-4 style={{maxWidth: '18rem' }} color="textSecondary" gutterBottom>
-          Title: {title}
-        </Typography>
-        <Typography variant="h5" component="h2">
-          Welcome
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          Id: {id}
-        </Typography>
-        <Typography variant="body2" component="p">
-          {body}
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
-      </CardContent>
-      <CardActions>
-       <Link to={`/postDetails/${id}`}><Button variant="contained" color="primary" size="small">Learn More</Button></Link>
-        
-      </CardActions>
-    </Card>
+    
+    <div className={classes.root} style={{backgroundColor:'#343A40'}}>
+      <Grid container spacing={0} >
+        <Grid item xs={12}>
+          <Paper className={classes.paper}><Card  display="flex" className={classes.root}>
+     <CardActionArea style={{backgroundColor:'#43413F', color:'#ffff'}}>
+       <CardContent style={{color:'#ffff'}}>
+       <Typography style={{color:'#ffff'}} gutterBottom  color="textSecondary" component="p">
+         Social Buddy {id}
+         </Typography>
+         <Typography gutterBottom variant="h5" component="h2">
+         Title: {title}
+         </Typography>
+         <Typography style={{color:'#ffff'}} variant="body2" color="textSecondary" component="p">
+         {body}
+         </Typography>
+         <Typography variant="body2" color="textSecondary" component="p">
+         <Link style={{alignItems: 'center', textDecoration: 'none'}} to={`/postDetails/${id}`}><Button  variant="contained" color="primary" size="small">See Details</Button></Link>
+         </Typography>
+         
+       </CardContent>
+     </CardActionArea>
+   </Card> 
+   </Paper>
+      </Grid>
+
+      </Grid>
+    </div>
         
     );
 };
