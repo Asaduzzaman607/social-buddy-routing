@@ -1,7 +1,7 @@
-# to-run-this-use
-npm i
+# to-run-this
+1. npm i
 and then
-npm start_url
+2. npm start
 
 # api-for-post
 https://jsonplaceholder.typicode.com/posts
